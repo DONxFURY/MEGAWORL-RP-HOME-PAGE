@@ -76,8 +76,14 @@
             left: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 7, 58, 0.3);
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            background: rgba(5, 5, 15, 0.98);
         }
         
         .header-container {
@@ -93,13 +99,12 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-decoration: none;
         }
         
-        .logo-icon {
-            color: var(--neon-gold);
-            font-size: 2.5rem;
-            text-shadow: var(--glow-gold);
-            animation: pulse 2s infinite;
+        .logo-img {
+            height: 60px;
+            transition: var(--transition);
         }
         
         .logo-text {
@@ -172,6 +177,10 @@
             letter-spacing: 1px;
             cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .nav-btn:hover {
@@ -199,7 +208,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 0 50px;
+            padding: 120px 0 50px;
             position: relative;
             overflow: hidden;
         }
@@ -272,6 +281,11 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .btn-primary {
@@ -797,6 +811,7 @@
             color: var(--neon-blue);
             font-size: 1.2rem;
             transition: var(--transition);
+            text-decoration: none;
         }
         
         .social-link:hover {
@@ -918,6 +933,10 @@
             .cta-container {
                 padding: 30px 20px;
             }
+            
+            .logo-img {
+                height: 50px;
+            }
         }
     </style>
 </head>
@@ -925,10 +944,10 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-globe-americas"></i></div>
+            <a href="#" class="logo">
+                <img src="https://cdn.discordapp.com/attachments/1381420113269493812/1387556573865443519/myLogo.png" alt="MEGAWORLD RP Logo" class="logo-img">
                 <span class="logo-text">MEGAWORLD RP</span>
-            </div>
+            </a>
             <nav class="nav-links">
                 <a href="#" class="active">Home</a>
                 <a href="#features">Features</a>
@@ -937,8 +956,12 @@
                 <a href="#testimonials">Testimonials</a>
             </nav>
             <div class="nav-buttons">
-                <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="nav-btn">Discord</a>
-                <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="nav-btn primary">Buy Now</a>
+                <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="nav-btn">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="nav-btn primary">
+                    <i class="fas fa-shopping-cart"></i> Buy Now
+                </a>
             </div>
         </div>
     </header>
@@ -953,8 +976,12 @@
                     Experience the ultimate FiveM roleplay server with unprecedented features and a thriving community. MEGAWORLD RP offers immersive gameplay, balanced economy, and regular updates without pay-to-win mechanics.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="hero-btn btn-primary">Join Discord</a>
-                    <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="hero-btn btn-secondary">View Prices</a>
+                    <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="hero-btn btn-primary">
+                        <i class="fab fa-discord"></i> Join Discord
+                    </a>
+                    <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="hero-btn btn-secondary">
+                        <i class="fas fa-tags"></i> View Prices
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1253,8 +1280,12 @@
                 <h2 class="cta-title">READY TO JOIN MEGAWORLD?</h2>
                 <p class="cta-text">Experience premium roleplay in our thriving community. With no pay-to-win mechanics and weekly updates, now is the perfect time to start your journey.</p>
                 <div class="hero-buttons" style="justify-content: center;">
-                    <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="hero-btn btn-primary">Join Discord</a>
-                    <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="hero-btn btn-secondary">View Prices</a>
+                    <a href="https://discord.gg/5CKqbzn7Dm" target="_blank" class="hero-btn btn-primary">
+                        <i class="fab fa-discord"></i> Join Discord
+                    </a>
+                    <a href="https://donxfury.github.io/MWRP-PIRCELIST/" target="_blank" class="hero-btn btn-secondary">
+                        <i class="fas fa-tags"></i> View Prices
+                    </a>
                 </div>
             </div>
         </div>
@@ -1306,9 +1337,10 @@
                     <div class="newsletter">
                         <p style="color: #aaa; margin-top: 20px;">Subscribe to our newsletter for updates:</p>
                         <div class="newsletter-input">
-                            <input type="email" placeholder="Your Email Address">
-                            <button>Subscribe</button>
+                            <input type="email" placeholder="Your Email Address" id="newsletter-email">
+                            <button id="subscribe-btn">Subscribe</button>
                         </div>
+                        <p id="subscribe-message" style="margin-top: 10px; color: var(--neon-green); display: none;">Thank you for subscribing!</p>
                     </div>
                 </div>
             </div>
@@ -1377,6 +1409,43 @@
             document.querySelectorAll('.feature-card, .testimonial-card, .gallery-item').forEach(el => {
                 observer.observe(el);
             });
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Newsletter subscription
+            const subscribeBtn = document.getElementById('subscribe-btn');
+            const emailInput = document.getElementById('newsletter-email');
+            const subscribeMessage = document.getElementById('subscribe-message');
+            
+            subscribeBtn.addEventListener('click', () => {
+                const email = emailInput.value;
+                if (email && validateEmail(email)) {
+                    // In a real app, you would send this to your server
+                    subscribeMessage.style.display = 'block';
+                    emailInput.value = '';
+                    
+                    // Hide message after 3 seconds
+                    setTimeout(() => {
+                        subscribeMessage.style.display = 'none';
+                    }, 3000);
+                } else {
+                    alert('Please enter a valid email address');
+                }
+            });
+            
+            // Email validation
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
         });
     </script>
 </body>
